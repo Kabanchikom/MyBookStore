@@ -27,6 +27,8 @@ public class SeedData
 
         var bookTypes = CreateBookTypes();
         var manufacturers = CreateManufacturers();
+        var authors = CreateAuthors();
+        var genres = CreateGenres();
 
         var books = new List<Book>();
 
@@ -44,7 +46,16 @@ public class SeedData
                           " фильма Тарковского «Сталкер»; через три десятилетия появились не менее культовая" +
                           " компьютерная игра с тем же названием и целая серия повестей и романов," +
                           " написанных с использованием мира «Пикника».",
-            Manufacturer = manufacturers.First(x => x.Name == "Издательство АСТ")
+            Manufacturer = manufacturers.First(x => x.Name == "Издательство АСТ"),
+            Authors = authors.Where(x =>
+                    x.Surname == "Стругацкий"
+                    && x.MiddleName == "Натанович")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Фантастика"
+                        or "Проза")
+                .ToList()
         });
 
         books.Add(new Book
@@ -60,7 +71,17 @@ public class SeedData
                           " Федерации за выдающиеся достижения в области гуманитарной деятельности (2006), академик" +
                           " Российской академии наук..В настоящем издании представлен «Архипелаг ГУЛАГ» — всемирно" +
                           " известная документально-художественная эпопея о репрессиях в годы советской власти. ",
-            Manufacturer = manufacturers.First(x => x.Name == "Дом Книги")
+            Manufacturer = manufacturers.First(x => x.Name == "Дом Книги"),
+            Authors = authors.Where(x =>
+                    x.Name == "Александр"
+                    && x.MiddleName == "Исаевич"
+                    && x.Surname == "Солженицын")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Классика"
+                        or "Проза")
+                .ToList()
         });
 
         books.Add(new Book
@@ -82,7 +103,17 @@ public class SeedData
                           " грабежа и утеснения - против государства\". Так на свет появилась" +
                           " \"Государственность и анархия\" - манифест анархизма и основа бакунинского учения" +
                           " о возможности перестройки жизни на началах свободы, равенства и справедливости.",
-            Manufacturer = manufacturers.First(x => x.Name == "Дом Книги")
+            Manufacturer = manufacturers.First(x => x.Name == "Дом Книги"),
+            Authors = authors.Where(x =>
+                    x.Name == "Михаил"
+                    && x.MiddleName == "Александрович"
+                    && x.Surname == "Бакунин")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Философия"
+                        or "Проза")
+                .ToList()
         });
 
         books.Add(new Book
@@ -98,7 +129,17 @@ public class SeedData
                           " пророческими нотками, мотивами \"солнечности\", стремлениями к постоянному обновлению." +
                           " Считающаяся сильнейшей в литературном наследии поэта, эта книга, несомненно, запомнится" +
                           " читателю и позволит услышать несмолкаемый Голос Вечности!",
-            Manufacturer = manufacturers.First(x => x.Name == "Эксмо")
+            Manufacturer = manufacturers.First(x => x.Name == "Эксмо"),
+            Authors = authors.Where(x =>
+                    x.Name == "Константин"
+                    && x.MiddleName == "Дмитриевич"
+                    && x.Surname == "Бальмонт")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Поэзия"
+                        or "Классика")
+                .ToList()
         });
 
         books.Add(new Book
@@ -115,7 +156,18 @@ public class SeedData
                           " литературности и т.д. <…> Это — вещь замечательная и неисчерпаемая, благодарю тебя" +
                           " за то, что ты заставил меня, наконец, прочесть ее».А. А. Блок" +
                           " из письма Е. П. Иванову от 3 сентября 1908 г. ",
-            Manufacturer = manufacturers.First(x => x.Name == "Эксмо")
+            Manufacturer = manufacturers.First(x => x.Name == "Эксмо"),
+            Authors = authors.Where(x =>
+                    x.Name == "Брэм"
+                    && x.Surname == "Стокер")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Роман"
+                        or "Классика"
+                        or "Ужасы"
+                        or "Проза")
+                .ToList()
         });
 
         books.Add(new Book
@@ -133,7 +185,16 @@ public class SeedData
                           " русско-японской войны дополненное издание книги стало бестселлером" +
                           " и присвоило Нитобэ статус \"публициста, выступающего от имени Японии\" —" +
                           " культурного посредника между Японией и Западом. ",
-            Manufacturer = manufacturers.First(x => x.Name == "Эксмо")
+            Manufacturer = manufacturers.First(x => x.Name == "Эксмо"),
+            Authors = authors.Where(x =>
+                    x.Name == "Инандзо"
+                    && x.Surname == "Нитобэ")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Философия"
+                        or "Проза")
+                .ToList()
         });
 
         books.Add(new Book
@@ -158,7 +219,16 @@ public class SeedData
                           " чем является это великое произведение: \"путеводителем\" по загробному" +
                           " миру или попыткой познать непознаваемое, найти рациональное в иррациональном," +
                           " показать людям путь от мрака и скорби к свету и радости. ",
-            Manufacturer = manufacturers.First(x => x.Name == "Эксмо")
+            Manufacturer = manufacturers.First(x => x.Name == "Эксмо"),
+            Authors = authors.Where(x =>
+                    x.Name == "Данте"
+                    && x.Surname == "Алигьери")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Поэзия"
+                        or "Классика")
+                .ToList()
         });
 
         books.Add(new Book
@@ -174,7 +244,16 @@ public class SeedData
                           " культа. Именно там могут исполниться их сокровенные желания, ставшие смыслом" +
                           " их жизни... Так начинается одна из великолепнейших саг в истории фантастики," +
                           " охватывающая все сопутствующие жанры – от космической оперы до хоррора. ",
-            Manufacturer = manufacturers.First(x => x.Name == "Дом Книги")
+            Manufacturer = manufacturers.First(x => x.Name == "Дом Книги"),
+            Authors = authors.Where(x =>
+                    x.Name == "Дэн"
+                    && x.Surname == "Симмонс")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Фантастика"
+                        or "Проза")
+                .ToList()
         });
 
         books.Add(new Book
@@ -188,7 +267,16 @@ public class SeedData
                           " характеру, по многосторонности и учености». Во всей мощи его поэтическое мастерство" +
                           " проявилось в созданной им поэме «Потерянный рай» (1663), белый стих которой как образец" +
                           " совершенства стоит рядом с белым стихом драм Шекспира.",
-            Manufacturer = manufacturers.First(x => x.Name == "Эксмо")
+            Manufacturer = manufacturers.First(x => x.Name == "Эксмо"),
+            Authors = authors.Where(x =>
+                    x.Name == "Джон"
+                    && x.Surname == "Мильтон")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Поэзия"
+                        or "Классика")
+                .ToList()
         });
 
         books.Add(new Book
@@ -207,7 +295,18 @@ public class SeedData
                           " Гёте задает загадки, и уже не одно поколение читателей пытается их разгадать." +
                           " Настоящее издание содержит признанный и наиболее точный перевод Н.А. Холодковского," +
                           " за который в 1917 г. Российской Академией наук ему была присуждена Пушкинская премия. ",
-            Manufacturer = manufacturers.First(x => x.Name == "Эксмо")
+            Manufacturer = manufacturers.First(x => x.Name == "Эксмо"),
+            Authors = authors.Where(x =>
+                    x.Name == "Иоган"
+                    && x.MiddleName == "Вольфганг"
+                    && x.Surname == "Гете")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Поэзия"
+                        or "Классика"
+                        or "Проза")
+                .ToList()
         });
 
         books.Add(new Book
@@ -228,7 +327,17 @@ public class SeedData
                           " иррационально. \"Замок\" — это в первую очередь метафора, сквозь которую проглядывают" +
                           " приметы реальности. Замок — вполне конкретен, и в то же время это мираж. Может," +
                           " дорога к нему — это дорога к Богу, а Деревня — всего лишь прообраз нашего земного мира? ",
-            Manufacturer = manufacturers.First(x => x.Name == "Издательство АСТ")
+            Manufacturer = manufacturers.First(x => x.Name == "Издательство АСТ"),
+            Authors = authors.Where(x =>
+                    x.Name == "Франц"
+                    && x.Surname == "Кафка")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Роман"
+                        or "Классика"
+                        or "Проза")
+                .ToList()
         });
 
         books.Add(new Book
@@ -250,7 +359,16 @@ public class SeedData
                           " продолжает жить и не теряет своей сумасшедшей популярности. По мотивам романа был снят" +
                           " одноименный фильм (реж. Милош Форман, 1975), покоривший весь мир и получивший пять" +
                           " Оскаров. А также поставлено множество спектаклей в разных странах, в том числе в России.",
-            Manufacturer = manufacturers.First(x => x.Name == "Эксмо")
+            Manufacturer = manufacturers.First(x => x.Name == "Эксмо"),
+            Authors = authors.Where(x =>
+                    x.Name == "Кен"
+                    && x.Surname == "Кизи")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Роман"
+                        or "Проза")
+                .ToList()
         });
 
         books.Add(new Book
@@ -269,7 +387,17 @@ public class SeedData
                           " даны примеры элементарных приложений. По сравнению с предыдущим изданием добавлены" +
                           " десятки простых, но в то же время очень важных алгоритмов. В соответствии с современными" +
                           " направлениями исследований был существенно переработан раздел математического введения. ",
-            Manufacturer = manufacturers.First(x => x.Name == "Наука и просвещение")
+            Manufacturer = manufacturers.First(x => x.Name == "Наука и просвещение"),
+            Authors = authors.Where(x =>
+                    x.Name == "Дональд"
+                    && x.MiddleName == "Эрвин"
+                    && x.Surname == "Кнут")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Образование"
+                        or "Проза")
+                .ToList()
         });
 
         books.Add(new Book
@@ -287,7 +415,16 @@ public class SeedData
                           " Воплощенный кошмар психолога или духовный целитель? Со дня публикации книги прошло больше" +
                           " 50 лет, а ее читатели все так же продолжают задаваться вопросами, ответы на которые" +
                           " невозможно получить, не заглянув в свое собственное сердце.",
-            Manufacturer = manufacturers.First(x => x.Name == "Эксмо")
+            Manufacturer = manufacturers.First(x => x.Name == "Эксмо"),
+            Authors = authors.Where(x =>
+                    x.Name == "Станислав"
+                    && x.Surname == "Лем")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Фантастика"
+                        or "Проза")
+                .ToList()
         });
 
         books.Add(new Book
@@ -308,7 +445,18 @@ public class SeedData
                           " своим присутствием Москву 1930-х, о прокураторе Иудеи всаднике Понтии Пилате и нищем" +
                           " философе Иешуа Га-Ноцри, о талантливом и несчастном Мастере и его прекрасной и верной" +
                           " возлюбленной Маргарите? ",
-            Manufacturer = manufacturers.First(x => x.Name == "Дом Книги")
+            Manufacturer = manufacturers.First(x => x.Name == "Дом Книги"),
+            Authors = authors.Where(x =>
+                    x.Name == "Михаил"
+                    && x.MiddleName == "Афанасьевич"
+                    && x.Surname == "Булгаков")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Роман"
+                        or "Классика"
+                        or "Проза")
+                .ToList()
         });
 
         books.Add(new Book
@@ -323,7 +471,16 @@ public class SeedData
                           " создать принципиально новое и всеобъемлющее учение, противоположное рационализму Нового" +
                           " времени.В философии Шопенгауэра движущая сила всех явлений во Вселенной - бессознательная" +
                           " мировая воля, которая проявляет себя во всем и всему остается чуждой.",
-            Manufacturer = manufacturers.First(x => x.Name == "Дом Книги")
+            Manufacturer = manufacturers.First(x => x.Name == "Дом Книги"),
+            Authors = authors.Where(x =>
+                    x.Name == "Артур"
+                    && x.Surname == "Шопенгауэр")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Философия"
+                        or "Проза")
+                .ToList()
         });
 
         books.Add(new Book
@@ -337,7 +494,15 @@ public class SeedData
                           " рисует картину идеального, по его мнению, устройства жизни людей, основанного на высшей" +
                           " справедливости, и дает подробную характеристику основным существующим формам правления," +
                           " таким, как аристократия, олигархия, тирания, демократия, и другим.",
-            Manufacturer = manufacturers.First(x => x.Name == "Эксмо")
+            Manufacturer = manufacturers.First(x => x.Name == "Эксмо"),
+            Authors = authors.Where(x =>
+                    x.Name == "Платон")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Философия"
+                        or "Проза")
+                .ToList()
         });
 
         books.Add(new Book
@@ -358,7 +523,17 @@ public class SeedData
                           " может искупить свою вину. «Преступление и наказание» неоднократно экранизировали," +
                           " музыку к балету написал Чайковский, а недавно на одной из московских площадок" +
                           " по роману была поставлена рок-опера.",
-            Manufacturer = manufacturers.First(x => x.Name == "Эксмо")
+            Manufacturer = manufacturers.First(x => x.Name == "Эксмо"),
+            Authors = authors.Where(x =>
+                    x.Name == "Федор"
+                    && x.MiddleName == "Михайлович"
+                    && x.Surname == "Достоевский")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Роман"
+                        or "Проза")
+                .ToList()
         });
 
         books.Add(new Book
@@ -372,7 +547,17 @@ public class SeedData
                           "Самый увлекательный в двадцатом столетии роман о дружбе..." +
                           " Самый трагический и пронзительный роман о человеческих отношениях" +
                           " за всю историю двадцатого столетия. ",
-            Manufacturer = manufacturers.First(x => x.Name == "Эксмо")
+            Manufacturer = manufacturers.First(x => x.Name == "Эксмо"),
+            Authors = authors.Where(x =>
+                    x.Name == "Эрих"
+                    && x.MiddleName == "Мария"
+                    && x.Surname == "Ремарк")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Роман"
+                        or "Проза")
+                .ToList()
         });
 
         books.Add(new Book
@@ -391,7 +576,17 @@ public class SeedData
                           " \"Мой лунный друг\".\"Всякое стихотворение - покрывало, растянутое на остриях нескольких" +
                           " слов. Эти слова светятся, как звезды... Из-за них существует" +
                           " стихотворение...\" (Александр Блок) ",
-            Manufacturer = manufacturers.First(x => x.Name == "Эксмо")
+            Manufacturer = manufacturers.First(x => x.Name == "Эксмо"),
+            Authors = authors.Where(x =>
+                    x.Name == "Александр"
+                    && x.MiddleName == "Александрович"
+                    && x.Surname == "Блок")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Классика"
+                        or "Поэзия")
+                .ToList()
         });
 
         books.Add(new Book
@@ -409,7 +604,17 @@ public class SeedData
                           " и происходят невероятные события. Однако эти невероятные события снова и снова" +
                           " становятся своеобразным «волшебным зеркалом», сквозь которое читателю является" +
                           " подлинная история Латинской Америки…",
-            Manufacturer = manufacturers.First(x => x.Name == "Дом Книги")
+            Manufacturer = manufacturers.First(x => x.Name == "Дом Книги"),
+            Authors = authors.Where(x =>
+                    x.Name == "Габриэль"
+                    && x.MiddleName == "Гарсиа"
+                    && x.Surname == "Маркес")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Классика"
+                        or "Проза")
+                .ToList()
         });
 
         books.Add(new Book
@@ -464,7 +669,16 @@ public class SeedData
                           " специализированные темы (такие как обработка текста, тестирование и язык C). В книге" +
                           " содержится много справочного материала. Исходные тексты программ и иные материалы" +
                           " читатели могут найти на веб-сайте автора.",
-            Manufacturer = manufacturers.First(x => x.Name == "Дом Книги")
+            Manufacturer = manufacturers.First(x => x.Name == "Дом Книги"),
+            Authors = authors.Where(x =>
+                    x.Name == "Бьярне"
+                    && x.Surname == "Страуструп")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Образование"
+                        or "Проза")
+                .ToList()
         });
 
         books.Add(new Book
@@ -481,7 +695,15 @@ public class SeedData
                           " чтобы использовать принципы, сформулированные Сунь-цзы. Они равно применимы в политике," +
                           " управлении и даже в повседневной жизни. Победителем мечтает стать каждый. Постижение" +
                           " древней мудрости и сегодня - шаг к победе. ",
-            Manufacturer = manufacturers.First(x => x.Name == "Эксмо")
+            Manufacturer = manufacturers.First(x => x.Name == "Эксмо"),
+            Authors = authors.Where(x =>
+                    x.Name == "Сунь-Цзы")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Философия"
+                        or "Проза")
+                .ToList()
         });
 
         books.Add(new Book
@@ -497,7 +719,16 @@ public class SeedData
                           " между животным и Сверхчеловеком. Необычная форма - поэтичная, афористичная - не совсем" +
                           " соответствует нашим представлениям о философском трактате. Однако, вчитываясь, мы" +
                           " улавливаем ход мысли автора, все глубже проникаемся его идеями и убеждениями...",
-            Manufacturer = manufacturers.First(x => x.Name == "Издательство АСТ")
+            Manufacturer = manufacturers.First(x => x.Name == "Издательство АСТ"),
+            Authors = authors.Where(x =>
+                    x.Name == "Фридрих"
+                    && x.Surname == "Ницше")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Философия"
+                        or "Проза")
+                .ToList()
         });
 
         books.Add(new Book
@@ -513,7 +744,18 @@ public class SeedData
                           " познания простых и сложных жизненных истин. Мы все так же находим себя в Наташе" +
                           " Ростовой, Андрее Болконском, Пьере Безухове, все так же, подобно им, хотим жить," +
                           " любить и верить наперекор войне - с неприятелем ли, с обстоятельствами или с самими собой. ",
-            Manufacturer = manufacturers.First(x => x.Name == "Эксмо")
+            Manufacturer = manufacturers.First(x => x.Name == "Эксмо"),
+            Authors = authors.Where(x =>
+                    x.Name == "Лев"
+                    && x.MiddleName == "Николаевич"
+                    && x.Surname == "Толстой")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Классика"
+                        or "Проза"
+                        or "Роман")
+                .ToList()
         });
 
         books.Add(new Book
@@ -528,12 +770,259 @@ public class SeedData
                           " темы отсут ствия индивидуальности, тотальной слежки и стремлений к призрачному" +
                           " обществу всеоб щего равенства, стали символами тоталитар ного мира. Как близок сюжет" +
                           " романа стал современной реальности? ",
-            Manufacturer = manufacturers.First(x => x.Name == "Эксмо")
+            Manufacturer = manufacturers.First(x => x.Name == "Эксмо"),
+            Authors = authors.Where(x =>
+                    x.Name == "Евгений"
+                    && x.MiddleName == "Иванович"
+                    && x.Surname == "Замятин")
+                .ToList(),
+            Genres = genres.Where(x =>
+                    x.Name
+                        is "Фантастика"
+                        or "Проза")
+                .ToList()
         });
 
         #endregion
 
         return books;
+    }
+
+    private List<Genre> CreateGenres()
+    {
+        var genres = new List<Genre>();
+
+        #region Content
+
+        genres.Add(new Genre
+        {
+            Name = "Классика"
+        });
+
+        genres.Add(new Genre
+        {
+            Name = "Фантастика"
+        });
+
+        genres.Add(new Genre
+        {
+            Name = "Проза"
+        });
+
+        genres.Add(new Genre
+        {
+            Name = "Поэзия"
+        });
+
+        genres.Add(new Genre
+        {
+            Name = "Философия"
+        });
+
+        genres.Add(new Genre
+        {
+            Name = "Образование"
+        });
+
+        genres.Add(new Genre
+        {
+            Name = "Ужасы"
+        });
+
+        genres.Add(new Genre
+        {
+            Name = "Роман"
+        });
+
+        #endregion
+
+        return genres;
+    }
+
+    private List<Author> CreateAuthors()
+    {
+        var authors = new List<Author>();
+
+        #region Content
+
+        authors.Add(new Author
+        {
+            Name = "Аркадий",
+            MiddleName = "Натанович",
+            Surname = "Стругацкий"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Борис",
+            MiddleName = "Натанович",
+            Surname = "Стругацкий"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Александр",
+            MiddleName = "Исаевич",
+            Surname = "Солженицын"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Михаил",
+            MiddleName = "Александрович",
+            Surname = "Бакунин"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Константин",
+            MiddleName = "Дмитриевич",
+            Surname = "Бальмонт"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Брэм",
+            Surname = "Стокер"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Инандзо",
+            Surname = "Нитобэ"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Данте",
+            Surname = "Алигьери"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Дэн",
+            Surname = "Симмонс"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Джон",
+            Surname = "Мильтон"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Иоган",
+            MiddleName = "Вольфганг",
+            Surname = "Гете"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Франц",
+            Surname = "Кафка"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Кен",
+            Surname = "Кизи"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Дональд",
+            MiddleName = "Эрвин",
+            Surname = "Кнут"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Дональд",
+            MiddleName = "Эрвин",
+            Surname = "Кнут"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Станислав",
+            Surname = "Лем"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Михаил",
+            MiddleName = "Афанасьевич",
+            Surname = "Булгаков"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Артур",
+            Surname = "Шопенгауэр"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Платон",
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Федор",
+            MiddleName = "Михайлович",
+            Surname = "Достоевский"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Эрих",
+            MiddleName = "Мария",
+            Surname = "Ремарк"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Александр",
+            MiddleName = "Александрович",
+            Surname = "Блок"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Габриэль",
+            MiddleName = "Гарсиа",
+            Surname = "Маркес"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Бьярне",
+            Surname = "Страуструп"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Сунь-Цзы",
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Лев",
+            MiddleName = "Николаевич",
+            Surname = "Толстой"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Евгений",
+            MiddleName = "Иванович",
+            Surname = "Замятин"
+        });
+
+        #endregion
+
+        return authors;
     }
 
     private List<Manufacturer> CreateManufacturers()

@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace MyBookStore.MvcApp.Models;
 
 /// <summary>
@@ -44,14 +46,33 @@ public class Book
     public string? Description { get; set; }
 
     /// <summary>
-    /// Производитель.
+    /// Id Производителя.
     /// </summary>
-    public int ManufacterId { get; set; }
+    public int ManufacturerId { get; set; }
 
     /// <summary>
     /// Производитель.
     /// </summary>
     public Manufacturer Manufacturer { get; set; }
 
+    /// <remarks>Сколько звезд.</remarks>
+    [Range(0, 5, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
+    public decimal Rating { get; set; }
+
+    /// <summary>
+    /// Участвует ли в распродаже.
+    /// </summary>
+    public bool IsOnSale { get; set; }
+
+    /// <summary>
+    /// Величина скидки.
+    /// </summary>
+    [Range(0, 1, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
+    public decimal Discount { get; set; }
+
     public List<Review> Reviews { get; set; } = new();
+
+    public List<Author> Authors { get; set; } = new();
+
+    public List<Genre> Genres { get; set; } = new();
 }

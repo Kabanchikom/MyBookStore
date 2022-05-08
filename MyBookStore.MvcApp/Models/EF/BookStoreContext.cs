@@ -11,7 +11,7 @@ public class BookStoreContext : DbContext
     public DbSet<Order> Orders { get; set; }
     public DbSet<OrderStatus> OrderStatuses { get; set; }
     public DbSet<Review> Reviews { get; set; }
-
+    public DbSet<Genre> Genres { get; set; }
 
     public BookStoreContext(DbContextOptions<BookStoreContext> options)
         : base(options)
@@ -27,10 +27,20 @@ public class BookStoreContext : DbContext
         modelBuilder.Entity<Order>().HasKey(x => x.Id);
         modelBuilder.Entity<OrderStatus>().HasKey(x => x.Id);
         modelBuilder.Entity<Review>().HasKey(x => x.Id);
+        modelBuilder.Entity<Author>().HasKey(x => x.Id);
+        modelBuilder.Entity<Genre>().HasKey(x => x.Id);
 
         modelBuilder.Entity<Book>()
             .Property(x => x.Price)
             .HasPrecision(14, 2);
+
+        modelBuilder.Entity<Book>()
+            .Property(x => x.Rating)
+            .HasPrecision(3, 2);
+
+        modelBuilder.Entity<Book>()
+            .Property(x => x.Discount)
+            .HasPrecision(3, 2);
 
         modelBuilder.Entity<Book>()
             .HasMany(x => x.Types)
@@ -38,6 +48,14 @@ public class BookStoreContext : DbContext
 
         modelBuilder.Entity<Book>()
             .HasOne(x => x.Manufacturer)
+            .WithMany(x => x.Books);
+
+        modelBuilder.Entity<Book>()
+            .HasMany(x => x.Authors)
+            .WithMany(x => x.Books);
+
+        modelBuilder.Entity<Book>()
+            .HasMany(x => x.Genres)
             .WithMany(x => x.Books);
 
         modelBuilder.Entity<Order>()
