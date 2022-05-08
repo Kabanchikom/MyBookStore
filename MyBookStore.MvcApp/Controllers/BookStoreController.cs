@@ -17,15 +17,25 @@ public class BookStoreController : Controller
         _context = context;
     }
 
-    public async Task<IActionResult> List(int pageNumber = 1, int pageSize = 14)
+    public async Task<IActionResult> List(int pageNumber = 1, int pageSize = 12)
     {
-        var books = await _context
+        var books = _context
             .Books
             .Include(x => x.Manufacturer)
-            .Include(x => x.Types)
+            .Include(x => x.Types);
+
+        var pagedBooks = await books
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
             .ToListAsync();
 
-        return View(books);
+        var viewModel = new BookStoreListViewModel(
+            pageNumber,
+            pageSize,
+            await books.CountAsync(),
+            pagedBooks);
+
+        return View(viewModel);
     }
 
     public IActionResult Privacy()
