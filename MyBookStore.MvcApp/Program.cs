@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 
+builder.Host.UseDefaultServiceProvider(options => options.ValidateScopes = false);
 builder.Services.AddControllersWithViews();
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
@@ -27,6 +28,9 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Book}/{id?}");
+    pattern: "{controller=BookStore}/{action=List}/{id?}");
+
+var seedData = new SeedData();
+await seedData.EnsurePopulated(app, builder);
 
 app.Run();
