@@ -1,4 +1,4 @@
-namespace MyBookStore.MvcApp.Models;
+namespace MyBookStore.MvcApp.Models.ViewModels;
 
 public class ErrorViewModel
 {
