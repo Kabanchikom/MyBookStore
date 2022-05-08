@@ -1,0 +1,19 @@
+@model BookStoreListViewModel
+
+<header class="border-bottom mb-4 pb-3">
+    <div class="row">
+        <span class="col col-sm">Всего найдено: @Model.PageModel.ItemsCount</span>
+        <select class="form-control col col-sm offset-md-6">
+            <option>По цене</option>
+            @* <option>По популярности</option> *@
+            @* <option>По оценкам</option> *@
+        </select>
+        <sorter sort-model="@Model.SortModel"
+                action="List"
+                button-class="btn btn-outline-dark"
+                asc-icon-class="bi bi-sort-up"
+                desc-icon-class="bi bi-sort-down"
+                class="btn-group col col-sm">
+        </sorter>
+    </div>
+</header><!-- sect-heading -->

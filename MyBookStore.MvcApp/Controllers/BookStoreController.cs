@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using MyBookStore.MvcApp.Models;
 using MyBookStore.MvcApp.Models.EF;
 using MyBookStore.MvcApp.Models.ViewModels;
 
@@ -17,12 +19,20 @@ public class BookStoreController : Controller
         _context = context;
     }
 
-    public async Task<IActionResult> List(int pageNumber = 1, int pageSize = 12)
+    public async Task<IActionResult> List(
+        int pageNumber = 1,
+        int pageSize = 12,
+        SortOrder sortOrder = SortOrder.Ascending,
+        SortBy sortBy = SortBy.Price)
     {
-        var books = _context
+        IQueryable<Book> books = _context
             .Books
             .Include(x => x.Manufacturer)
             .Include(x => x.Types);
+
+        books = sortOrder == SortOrder.Ascending
+            ? books.OrderBy(b => b.Price)
+            : books.OrderByDescending(x => x.Price);
 
         var pagedBooks = await books
             .Skip((pageNumber - 1) * pageSize)
@@ -33,6 +43,8 @@ public class BookStoreController : Controller
             pageNumber,
             pageSize,
             await books.CountAsync(),
+            sortOrder,
+            sortBy,
             pagedBooks);
 
         return View(viewModel);
