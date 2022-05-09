@@ -8,4 +8,9 @@ public class Author
     public string? MiddleName { get; set; }
 
     public List<Book> Books { get; set; } = new();
+
+    public override string ToString()
+    {
+        return $"{Name} {MiddleName} {Surname}";
+    }
 }

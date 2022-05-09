@@ -10,7 +10,12 @@
         <div class="text-center">
             <!-- Product name-->
             <h5 class="fw-bolder">
-                <a class="link-dark" href="#">@Model.Title</a>
+                <a class="link-dark"
+                   asp-controller="BookStore"
+                   asp-action="Book"
+                   asp-route-bookId="@Model.Id">
+                    @Model.Title
+                </a>
             </h5>
             <!-- Product reviews-->
             <div class="d-flex justify-content-center small text-warning mb-2">

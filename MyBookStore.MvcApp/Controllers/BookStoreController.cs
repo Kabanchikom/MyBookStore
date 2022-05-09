@@ -66,9 +66,18 @@ public class BookStoreController : Controller
         return View();
     }
 
-    public IActionResult Book()
+    public async Task<IActionResult> Book(int bookId)
     {
-        return View();
+        var book = _context
+            .Books
+            .Include(x => x.Manufacturer)
+            .Include(x => x.Types)
+            .Include(x => x.Authors)
+            .Include(x => x.Genres)
+            .Include(x => x.Reviews)
+            .FirstOrDefault(x => x.Id == bookId);
+
+        return View(book);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
