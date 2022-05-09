@@ -1,0 +1,88 @@
+@model IEnumerable<Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Список книг</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-dark">Создать</a>
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Title)</th>
+        <th>@Html.DisplayNameFor(model => model.Authors)</th>
+        <th>@Html.DisplayNameFor(model => model.Genres)</th>
+        <th>@Html.DisplayNameFor(model => model.ReceiptDate)</th>
+        <th>@Html.DisplayNameFor(model => model.Price)</th>
+        <th>@Html.DisplayNameFor(model => model.Manufacturer)</th>
+        <th>@Html.DisplayNameFor(model => model.Rating)</th>
+        <th>@Html.DisplayNameFor(model => model.IsOnSale)</th>
+        <th>@Html.DisplayNameFor(model => model.Discount)</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @String.Join(", ", item
+                    .Authors
+                    .Select(x => x.ToString())
+                    .ToArray())
+            </td>
+            <td>
+                @String.Join(", ", item
+                    .Genres
+                    .Select(x => x.Name)
+                    .ToArray())
+            </td>
+            <td>
+                @item.ReceiptDate.ToString("dd/MM/yyyy")
+            </td>
+            <td>
+                <div class="text-nowrap">
+                    @item.Price.ToString("C")
+                </div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsOnSale)
+            </td>
+            <td>
+                @item.Discount.ToString("P0")
+            </td>
+            <td>
+                <div class="d-flex flex-nowrap">
+                    <a asp-action="Edit"
+                       asp-route-id="@item.Id"
+                       class="btn btn-outline-dark m-1">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                    <a asp-action="Details"
+                       asp-route-id="@item.Id"
+                       class="btn btn-outline-dark m-1">
+                        <i class="bi bi-eye"></i>
+                    </a>
+                    <a asp-action="Delete"
+                       asp-route-id="@item.Id"
+                       class="btn btn-outline-dark m-1">
+                        <i class="bi bi-x-lg"></i>
+                    </a>
+                </div>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

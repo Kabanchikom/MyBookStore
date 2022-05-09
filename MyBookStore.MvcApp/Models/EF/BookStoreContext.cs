@@ -12,6 +12,7 @@ public class BookStoreContext : DbContext
     public DbSet<OrderStatus> OrderStatuses { get; set; }
     public DbSet<Review> Reviews { get; set; }
     public DbSet<Genre> Genres { get; set; }
+    public DbSet<Author> Authors { get; set; }
 
     public BookStoreContext(DbContextOptions<BookStoreContext> options)
         : base(options)

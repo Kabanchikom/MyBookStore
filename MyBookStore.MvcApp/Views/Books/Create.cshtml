@@ -1,0 +1,93 @@
+@model MyBookStore.MvcApp.Models.DTO.BookDTO
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Создать</h1>
+
+<h4>Книга</h4>
+<hr/>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control"/>
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AuthorIds" class="control-label">Авторы</label>
+                <select asp-for="AuthorIds"
+                        asp-items="ViewBag.Authors"
+                        class="form-control">
+                </select>
+                <span asp-validation-for="AuthorIds" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GenreIds" class="control-label">Жанры</label>
+                <select asp-for="GenreIds"
+                        asp-items="ViewBag.Genres"
+                        class="form-control">
+                </select>
+                <span asp-validation-for="GenreIds" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeIds" class="control-label">Типы издания</label>
+                <select asp-for="TypeIds"
+                        asp-items="ViewBag.Types"
+                        class="form-control">
+                </select>
+                <span asp-validation-for="GenreIds" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImagePath" class="control-label"></label>
+                <input asp-for="ImagePath" class="form-control"/>
+                <span asp-validation-for="ImagePath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReceiptDate" class="control-label"></label>
+                <input type="date" asp-for="ReceiptDate" class="form-control"/>
+                <span asp-validation-for="ReceiptDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control"/>
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control"/>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ManufacturerId" class="control-label"></label>
+                <select asp-for="ManufacturerId" class="form-control" asp-items="ViewBag.ManufacturerId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rating" class="control-label"></label>
+                <input asp-for="Rating" class="form-control"/>
+                <span asp-validation-for="Rating" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsOnSale"/> @Html.DisplayNameFor(model => model.IsOnSale)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Discount" class="control-label"></label>
+                <input asp-for="Discount" class="form-control"/>
+                <span asp-validation-for="Discount" class="text-danger"></span>
+            </div>
+            <div class="form-group d-flex flex-nowrap">
+                <input type="submit" value="Создать" class="btn btn-dark"/>
+                <a asp-action="Index"
+                   class="btn btn-outline-dark m-1">
+                    Назад
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+

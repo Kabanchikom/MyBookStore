@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using MyBookStore.MvcApp.Infrastructure;
 using MyBookStore.MvcApp.Models.EF;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 builder.Services.AddDbContext<BookStoreContext>(options => options.UseSqlServer(connection));
+builder.Services.AddAutoMapper(typeof(AppMappingProfile));
 
 var app = builder.Build();
 
@@ -28,7 +30,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=BookStore}/{action=List}/{id?}");
+    pattern: "{controller=Books}/{action=Index}/{id?}");
 
 var seedData = new SeedData();
 await seedData.EnsurePopulated(app, builder);
