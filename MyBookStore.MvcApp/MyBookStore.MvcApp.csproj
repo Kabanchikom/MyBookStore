@@ -28,4 +28,11 @@
         <Folder Include="Models\ViewModels\Admin"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <_ContentIncludedByDefault Remove="Views\DeliveryTypes\Create.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\DeliveryTypes\Delete.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\DeliveryTypes\Edit.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\DeliveryTypes\Index.cshtml"/>
+    </ItemGroup>
+
 </Project>
