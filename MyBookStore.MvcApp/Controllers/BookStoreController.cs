@@ -22,6 +22,7 @@ public class BookStoreController : Controller
     public async Task<IActionResult> List(
         int pageNumber = 1,
         int pageSize = 12,
+        int? manufacturerId = null,
         SortOrder sortOrder = SortOrder.Ascending,
         SortBy sortBy = SortBy.Price)
     {
@@ -30,11 +31,19 @@ public class BookStoreController : Controller
             .Include(x => x.Manufacturer)
             .Include(x => x.Types);
 
-        books = sortOrder == SortOrder.Ascending
-            ? books.OrderBy(b => b.Price)
-            : books.OrderByDescending(x => x.Price);
+        var filteredBooks = books;
 
-        var pagedBooks = await books
+        if (manufacturerId != null)
+        {
+            filteredBooks = books
+                .Where(x => x.ManufacturerId == manufacturerId);
+        }
+
+        var sortedBooks = sortOrder == SortOrder.Ascending
+            ? filteredBooks.OrderBy(b => b.Price)
+            : filteredBooks.OrderByDescending(x => x.Price);
+
+        var pagedBooks = await sortedBooks
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync();
@@ -42,10 +51,12 @@ public class BookStoreController : Controller
         var viewModel = new BookStoreListViewModel(
             pageNumber,
             pageSize,
-            await books.CountAsync(),
+            await sortedBooks.CountAsync(),
+            manufacturerId,
             sortOrder,
             sortBy,
-            pagedBooks);
+            pagedBooks,
+            await _context.Manufacturers.ToListAsync());
 
         return View(viewModel);
     }

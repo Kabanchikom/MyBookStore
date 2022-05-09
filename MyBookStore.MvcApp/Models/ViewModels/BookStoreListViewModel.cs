@@ -8,9 +8,11 @@ public class BookStoreListViewModel
         int pageNumber,
         int pageSize,
         int itemsCount,
+        int? manufacturerId,
         SortOrder sortOrder,
         SortBy sortBy,
-        List<Book> books)
+        List<Book> books,
+        List<Manufacturer> manufacturers)
     {
         PageModel = new PageModel
         {
@@ -25,12 +27,21 @@ public class BookStoreListViewModel
             SortBy = sortBy
         };
 
+        FilterModel = new BooksFilterModel
+        {
+            Manufacturers = manufacturers,
+            SelectedManufacturer = manufacturers
+                .FirstOrDefault(x => x.Id == manufacturerId)
+        };
+
         Books = books;
     }
 
     public PageModel PageModel { get; set; }
 
     public SortModel SortModel { get; set; }
+
+    public BooksFilterModel FilterModel { get; set; }
 
     public List<Book> Books { get; set; }
 }
