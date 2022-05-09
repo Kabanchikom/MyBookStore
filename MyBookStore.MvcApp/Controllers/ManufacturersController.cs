@@ -7,27 +7,27 @@ using MyBookStore.MvcApp.Models.EF;
 namespace MyBookStore.MvcApp.Controllers;
 
 /// <summary>
-/// CRUD операции над таблицей "Жанры".
+/// CRUD операции над таблицей "Издатели".
 /// </summary>
-public class GenresController : Controller
+public class ManufacturersController : Controller
 {
     private readonly BookStoreContext _context;
 
-    public GenresController(BookStoreContext context)
+    public ManufacturersController(BookStoreContext context)
     {
         _context = context;
     }
 
     /// <summary>
-    /// Список жанров.
+    /// Список издателей.
     /// </summary>
     public async Task<IActionResult> Index()
     {
-        return View(await _context.Genres.ToListAsync());
+        return View(await _context.Manufacturers.ToListAsync());
     }
 
     /// <summary>
-    /// Форма создания жанра.
+    /// Форма создания издателя.
     /// </summary>
     public IActionResult Create()
     {
@@ -35,24 +35,24 @@ public class GenresController : Controller
     }
 
     /// <summary>
-    /// Создать жанр.
+    /// Создать издателя.
     /// </summary>
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,Name")] Genre genre)
+    public async Task<IActionResult> Create([Bind("Id,Name")] Manufacturer manufacturer)
     {
         if (ModelState.IsValid)
         {
-            _context.Add(genre);
+            _context.Add(manufacturer);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        return View(genre);
+        return View(manufacturer);
     }
 
     /// <summary>
-    /// Форма редактирования жанра.
+    /// Форма редактирования издателя.
     /// </summary>
     public async Task<IActionResult> Edit(int? id)
     {
@@ -61,23 +61,23 @@ public class GenresController : Controller
             return NotFound();
         }
 
-        var genre = await _context.Genres.FindAsync(id);
-        if (genre == null)
+        var manufacturer = await _context.Manufacturers.FindAsync(id);
+        if (manufacturer == null)
         {
             return NotFound();
         }
 
-        return View(genre);
+        return View(manufacturer);
     }
 
     /// <summary>
-    /// Редактировать жанр.
+    /// Редактировать издателя.
     /// </summary>
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Genre genre)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Manufacturer manufacturer)
     {
-        if (id != genre.Id)
+        if (id != manufacturer.Id)
         {
             return NotFound();
         }
@@ -86,12 +86,12 @@ public class GenresController : Controller
         {
             try
             {
-                _context.Update(genre);
+                _context.Update(manufacturer);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!GenreExists(genre.Id))
+                if (!ManufacturerExists(manufacturer.Id))
                 {
                     return NotFound();
                 }
@@ -104,11 +104,11 @@ public class GenresController : Controller
             return RedirectToAction(nameof(Index));
         }
 
-        return View(genre);
+        return View(manufacturer);
     }
 
     /// <summary>
-    /// Форма удаления жанра.
+    /// Форма удаления издателя.
     /// </summary>
     public async Task<IActionResult> Delete(int? id)
     {
@@ -117,31 +117,31 @@ public class GenresController : Controller
             return NotFound();
         }
 
-        var genre = await _context.Genres
+        var manufacturer = await _context.Manufacturers
             .FirstOrDefaultAsync(m => m.Id == id);
-        if (genre == null)
+        if (manufacturer == null)
         {
             return NotFound();
         }
 
-        return View(genre);
+        return View(manufacturer);
     }
 
     /// <summary>
-    /// Удалить жанр.
+    /// Удалить издателя.
     /// </summary>
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        var genre = await _context.Genres.FindAsync(id);
-        _context.Genres.Remove(genre);
+        var manufacturer = await _context.Manufacturers.FindAsync(id);
+        _context.Manufacturers.Remove(manufacturer);
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
     }
 
-    private bool GenreExists(int id)
+    private bool ManufacturerExists(int id)
     {
-        return _context.Genres.Any(e => e.Id == id);
+        return _context.Manufacturers.Any(e => e.Id == id);
     }
 }
