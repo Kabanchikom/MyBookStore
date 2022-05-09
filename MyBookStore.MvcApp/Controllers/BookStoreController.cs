@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Korzh.EasyQuery.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,7 @@ public class BookStoreController : Controller
     }
 
     public async Task<IActionResult> List(
+        string searchText,
         int pageNumber = 1,
         int pageSize = 12,
         int? manufacturerId = null,
@@ -31,11 +33,12 @@ public class BookStoreController : Controller
             .Include(x => x.Manufacturer)
             .Include(x => x.Types);
 
-        var filteredBooks = books;
+        var filteredBooks = books
+            .FullTextSearchQuery(searchText);
 
         if (manufacturerId != null)
         {
-            filteredBooks = books
+            filteredBooks = filteredBooks
                 .Where(x => x.ManufacturerId == manufacturerId);
         }
 
@@ -49,6 +52,7 @@ public class BookStoreController : Controller
             .ToListAsync();
 
         var viewModel = new BookStoreListViewModel(
+            searchText,
             pageNumber,
             pageSize,
             await sortedBooks.CountAsync(),

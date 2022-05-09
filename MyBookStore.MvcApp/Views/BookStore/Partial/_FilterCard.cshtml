@@ -12,7 +12,8 @@
                     {
                         <li>
                             <a asp-action="List"
-                               asp-route-manufacturerId="@manufacturer.Id">
+                               asp-route-manufacturerId="@manufacturer.Id"
+                               asp-route-searchText="@Model.SearchText">
                                 @manufacturer.Name
                             </a>
                         </li>

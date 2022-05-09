@@ -5,6 +5,7 @@ namespace MyBookStore.MvcApp.Models.ViewModels;
 public class BookStoreListViewModel
 {
     public BookStoreListViewModel(
+        string searchText,
         int pageNumber,
         int pageSize,
         int itemsCount,
@@ -14,6 +15,8 @@ public class BookStoreListViewModel
         List<Book> books,
         List<Manufacturer> manufacturers)
     {
+        SearchText = searchText;
+
         PageModel = new PageModel
         {
             ItemsCount = itemsCount,
@@ -44,4 +47,6 @@ public class BookStoreListViewModel
     public BooksFilterModel FilterModel { get; set; }
 
     public List<Book> Books { get; set; }
+
+    public string SearchText { get; set; }
 }

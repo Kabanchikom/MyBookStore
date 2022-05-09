@@ -4,19 +4,22 @@
     <h1 class="display-4">Каталог</h1>
 </div>
 
-<div class="input-group mb-3">
-    <input type="text"
-           class="form-control"
-           placeholder="Поиск..."
-           aria-label="Search"
-           aria-describedby="basic-addon2">
-    <div class="input-group-append">
-        <button class="btn btn-dark"
-                type="button">
-            <i class="bi bi-search"></i>
-        </button>
+<form asp-action="List">
+    <div class="input-group mb-3">
+        <input type="text"
+               value="@Model?.SearchText"
+               class="form-control"
+               placeholder="Поиск..."
+               name="searchText">
+        <div class="input-group-append">
+            <button class="btn btn-dark"
+                    type="submit">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
     </div>
-</div>
+</form>
+
 
 <div class="container">
     <div class="row">
@@ -52,7 +55,8 @@
                    class="btn-group pull-right m-1"
                    page-url-manufacturerId="@Model.FilterModel.SelectedManufacturer?.Id"
                    page-url-sortOrder="@Model.SortModel.SortOrder"
-                   page-url-sortBy="@Model.SortModel.SortBy">
+                   page-url-sortBy="@Model.SortModel.SortBy"
+                   page-url-searchText="@Model.SearchText">
             </pager>
         </main>
     </div>
