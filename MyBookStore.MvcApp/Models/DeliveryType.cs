@@ -5,7 +5,7 @@ namespace MyBookStore.MvcApp.Models;
 /// <summary>
 /// Услуги.
 /// </summary>
-/// <remarks>Тип доставки.</remarks>
+/// <remarks>Способ доставки.</remarks>
 public class DeliveryType
 {
     public int Id { get; set; }

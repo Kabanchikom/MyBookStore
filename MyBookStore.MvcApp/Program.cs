@@ -30,7 +30,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=DeliveryTypes}/{action=Index}/{id?}");
+    pattern: "{controller=Genres}/{action=Index}/{id?}");
 
 var seedData = new SeedData();
 await seedData.EnsurePopulated(app, builder);
