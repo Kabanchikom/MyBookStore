@@ -28,26 +28,6 @@ public class AuthorsController : Controller
     }
 
     /// <summary>
-    /// Подробная информация об авторе.
-    /// </summary>
-    public async Task<IActionResult> Details(int? id)
-    {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
-        var author = await _context.Authors
-            .FirstOrDefaultAsync(m => m.Id == id);
-        if (author == null)
-        {
-            return NotFound();
-        }
-
-        return View(author);
-    }
-
-    /// <summary>
     /// Форма создания автора.
     /// </summary>
     /// <returns></returns>
