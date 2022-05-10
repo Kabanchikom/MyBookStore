@@ -60,7 +60,7 @@ public class BookStoreContext : DbContext
             .WithMany(x => x.Books);
 
         modelBuilder.Entity<Order>()
-            .HasOne(x => x.OrderStatus)
+            .HasOne(x => x.Status)
             .WithMany(x => x.Orders);
 
         modelBuilder.Entity<Review>()

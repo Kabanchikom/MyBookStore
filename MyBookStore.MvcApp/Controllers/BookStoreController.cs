@@ -21,7 +21,7 @@ public class BookStoreController : Controller
     }
 
     public async Task<IActionResult> List(
-        string searchText,
+        string? searchText = null,
         int pageNumber = 1,
         int pageSize = 12,
         int? manufacturerId = null,

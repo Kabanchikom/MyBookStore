@@ -17,7 +17,13 @@ public class SeedData
         }
 
         var books = CreateBooks(webRootPath);
+        var deliveryTypes = CreateDeliveryTypes();
+        var orderStatuses = CreateOrderStatuses();
+
         await context.AddRangeAsync(books);
+        await context.AddRangeAsync(orderStatuses);
+        await context.AddRangeAsync(deliveryTypes);
+
         await context.SaveChangesAsync();
     }
 
@@ -1075,5 +1081,72 @@ public class SeedData
         #endregion
 
         return bookTypes;
+    }
+
+    private List<DeliveryType> CreateDeliveryTypes()
+    {
+        var deliveryTypes = new List<DeliveryType>();
+
+        #region Content
+
+        deliveryTypes.Add(new DeliveryType
+        {
+            Name = "Самовывоз"
+        });
+
+        deliveryTypes.Add(new DeliveryType
+        {
+            Name = "Курьером"
+        });
+
+        deliveryTypes.Add(new DeliveryType
+        {
+            Name = "Почтой"
+        });
+
+        #endregion
+
+        return deliveryTypes;
+    }
+
+    private List<OrderStatus> CreateOrderStatuses()
+    {
+        var orderStatuses = new List<OrderStatus>();
+
+        #region Content
+
+        orderStatuses.Add(new OrderStatus
+        {
+            Name = "Создан"
+        });
+
+        orderStatuses.Add(new OrderStatus
+        {
+            Name = "Собран"
+        });
+
+        orderStatuses.Add(new OrderStatus
+        {
+            Name = "Отправлен"
+        });
+
+        orderStatuses.Add(new OrderStatus
+        {
+            Name = "В пути"
+        });
+
+        orderStatuses.Add(new OrderStatus
+        {
+            Name = "Получен"
+        });
+
+        orderStatuses.Add(new OrderStatus
+        {
+            Name = "Отменен"
+        });
+
+        #endregion
+
+        return orderStatuses;
     }
 }

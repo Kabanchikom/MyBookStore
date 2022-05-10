@@ -5,7 +5,7 @@ namespace MyBookStore.MvcApp.Models.ViewModels;
 public class BookStoreListViewModel
 {
     public BookStoreListViewModel(
-        string searchText,
+        string? searchText,
         int pageNumber,
         int pageSize,
         int itemsCount,
@@ -48,5 +48,5 @@ public class BookStoreListViewModel
 
     public List<Book> Books { get; set; }
 
-    public string SearchText { get; set; }
+    public string? SearchText { get; set; }
 }

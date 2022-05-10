@@ -21,11 +21,12 @@
                         <a href="@Model.ReturnUrl" class="btn">
                             <i class="bi bi-arrow-left"></i> Продолжить покупки
                         </a>
-                        <form>
-                            <button class="btn btn-dark pull-right">
-                                <i class="bi bi-cart"></i> Оформить заказ
-                            </button>
-                        </form>
+                        <a type="submit"
+                           class="btn btn-dark pull-right"
+                           asp-controller="Orders"
+                           asp-action="Create">
+                            <i class="bi bi-cart"></i> Оформить заказ
+                        </a>
                     </div>
                 </div>
             </div>
