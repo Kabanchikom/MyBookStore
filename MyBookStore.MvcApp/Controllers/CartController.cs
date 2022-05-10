@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MyBookStore.MvcApp.Infrastructure;
 using MyBookStore.MvcApp.Models;
 using MyBookStore.MvcApp.Models.EF;
 using MyBookStore.MvcApp.Models.ViewModels;
@@ -13,10 +12,12 @@ namespace MyBookStore.MvcApp.Controllers;
 public class CartController : Controller
 {
     private readonly BookStoreContext _context;
+    private readonly Cart _cart;
 
-    public CartController(BookStoreContext context)
+    public CartController(BookStoreContext context, Cart cart)
     {
         _context = context;
+        _cart = cart;
     }
 
     /// <summary>
@@ -27,7 +28,7 @@ public class CartController : Controller
     {
         return View(new CartIndexViewModel
         {
-            Cart = GetCart(),
+            Cart = _cart,
             ReturnUrl = returnUrl
         });
     }
@@ -50,9 +51,7 @@ public class CartController : Controller
             return RedirectToAction("Index", new {returnUrl});
         }
 
-        var cart = GetCart();
-        cart.AddItem(book, quantity);
-        SaveCart(cart);
+        _cart.AddItem(book, quantity);
 
         return RedirectToAction("Index", new {returnUrl});
     }
@@ -72,27 +71,8 @@ public class CartController : Controller
             return RedirectToAction("Index", new {returnUrl});
         }
 
-        var cart = GetCart();
-        cart.RemoveLine(book);
-        SaveCart(cart);
+        _cart.RemoveLine(book);
 
         return RedirectToAction("Index", new {returnUrl});
-    }
-
-    /// <summary>
-    /// Получить объект корзины из состояния сеанса.
-    /// </summary>
-    private Cart GetCart()
-    {
-        var cart = HttpContext.Session.GetJson<Cart>("Cart") ?? new Cart();
-        return cart;
-    }
-
-    /// <summary>
-    /// Сохранить объект корзины в состоянии сеанса.
-    /// </summary>
-    private void SaveCart(Cart cart)
-    {
-        HttpContext.Session.SetJson("Cart", cart, true);
     }
 }

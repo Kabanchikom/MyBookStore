@@ -7,7 +7,7 @@ namespace MyBookStore.MvcApp.Infrastructure
         /// <summary>
         /// Добавить JSON к состоянию сеанса.
         /// </summary>
-        public static void SetJson(this ISession session,
+        public static void SetJson(this ISession? session,
             string key,
             object value,
             bool ignoreRefLoops)
