@@ -8,7 +8,8 @@ var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Host.UseDefaultServiceProvider(options => options.ValidateScopes = false);
 builder.Services.AddControllersWithViews();
-builder.Services.AddMemoryCache();
+builder.Services.AddDistributedMemoryCache();
+;
 builder.Services.AddSession();
 builder.Services.AddDbContext<BookStoreContext>(options => options.UseSqlServer(connection));
 builder.Services.AddAutoMapper(typeof(AppMappingProfile));
@@ -23,14 +24,13 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseSession();
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Genres}/{action=Index}/{id?}");
+    pattern: "{controller=BookStore}/{action=List}/{id?}");
 
 var seedData = new SeedData();
 await seedData.EnsurePopulated(app, builder);

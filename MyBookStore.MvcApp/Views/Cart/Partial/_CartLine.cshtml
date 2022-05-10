@@ -1,0 +1,63 @@
+@using MyBookStore.MvcApp.Infrastructure
+@model CartLine
+
+<div class="container mb-5 p-0">
+    <div class="card">
+        <div class="card-body p-0">
+            <div class="row align-items-center">
+                <div class="col">
+                    <img class="card-img-left" src="@Model?.Book.ImagePath" width="200" height="300"/>
+                </div>
+                <div class="col-md">
+                    <h3 class="fw-bolder">
+                        <a asp-controller="BookStore"
+                           asp-action="Book"
+                           asp-route-bookId="@Model.Book.Id"
+                           class="link-dark">
+                            @Model?.Book.Title
+                        </a>
+                    </h3>
+                    <p class="small">
+                        @String.Join(", ", Model
+                            .Book
+                            .Authors
+                            .Select(x => x.ToString())
+                            .ToArray())
+                    </p>
+                    <dl class="small m-b-none">
+                        <dt>Жанры</dt>
+                        <dd>
+                            @String.Join(", ", Model
+                                .Book
+                                .Genres
+                                .Select(x => x.Name.ToString())
+                                .ToArray())
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-sm">
+                    <h4>
+                        <div class="text-nowrap">
+                            @Model.Total.ToString("C")
+                        </div>
+                    </h4>
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap">
+                            Цена: @Model.Book.Price.ToString("C")
+                        </div>
+                        <div class="text-nowrap">
+                            Количество: @Model.Quantity
+                        </div>
+                    </div>
+                    <form asp-action="RemoveFromCart" method="post">
+                        <input type="hidden" name="bookId" value="@Model.Book.Id"/>
+                        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
+                        <button type="submit" class="btn btn-outline-danger" placeholder="2">
+                            <i class="bi bi-trash3"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
