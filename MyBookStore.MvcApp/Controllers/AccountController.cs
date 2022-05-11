@@ -105,12 +105,15 @@ public class AccountController : Controller
         return View(model);
     }
 
-    [HttpPost]
-    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Logout()
     {
         // удаляем аутентификационные куки
         await _signInManager.SignOutAsync();
         return RedirectToAction("List", "BookStore");
+    }
+
+    public IActionResult Profile()
+    {
+        throw new NotImplementedException();
     }
 }

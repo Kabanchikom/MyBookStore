@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -9,6 +12,23 @@
     <link rel="stylesheet" href="~/css/comments.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/MyBookStore.MvcApp.styles.css" asp-append-version="true"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <style>
+        /* Stackoverflow preview fix, please ignore */
+        .navbar-nav {
+          flex-direction: row;
+        }
+        
+        .nav-link {
+          padding-right: .5rem !important;
+          padding-left: .5rem !important;
+        }
+        
+        /* Fixes dropdown menus placed on the right side */
+        .ml-auto .dropdown-menu {
+          left: auto !important;
+          right: 0px;
+        }
+      </style>
 </head>
 <body>
 <header>
@@ -41,6 +61,32 @@
                             <a class="dropdown-item" asp-controller="Orders" asp-action="Index">Заказы</a>
                         </div>
                     </li>
+
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li class="nav-item dropdown">
+                            <ul class="nav navbar-nav ml-5">
+                                <li class="dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span>
+                                            <i class="bi bi-person"></i>
+                                        </span>
+                                        <strong>@User.Identity.Name</strong>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <a class="dropdown-item" asp-controller="Account" asp-action="Profile">Личный кабинет</a>
+                                        <a class="dropdown-item" asp-controller="Account" asp-action="Logout">Выход</a>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Вход</a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
