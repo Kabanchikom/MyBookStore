@@ -10,6 +10,8 @@
         <PackageReference Include="AutoMapper" Version="11.0.1"/>
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0"/>
         <PackageReference Include="Korzh.EasyQuery.Linq" Version="7.2.1"/>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.4"/>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.5"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.4"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.4">
             <PrivateAssets>all</PrivateAssets>
@@ -33,6 +35,15 @@
         <_ContentIncludedByDefault Remove="Views\DeliveryTypes\Delete.cshtml"/>
         <_ContentIncludedByDefault Remove="Views\DeliveryTypes\Edit.cshtml"/>
         <_ContentIncludedByDefault Remove="Views\DeliveryTypes\Index.cshtml"/>
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\AccessDenied.cshtml"/>
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Login.cshtml"/>
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Register.cshtml"/>
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\RegisterConfirmation.cshtml"/>
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\ResendEmailConfirmation.cshtml"/>
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\_ViewImports.cshtml"/>
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\_ValidationScriptsPartial.cshtml"/>
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\_ViewImports.cshtml"/>
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\_ViewStart.cshtml"/>
     </ItemGroup>
 
 </Project>
