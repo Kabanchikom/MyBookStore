@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MyBookStore.MvcApp.Models;
 using MyBookStore.MvcApp.Models.ViewModels;
 
@@ -112,8 +113,42 @@ public class AccountController : Controller
         return RedirectToAction("List", "BookStore");
     }
 
-    public IActionResult Profile()
+    /// <summary>
+    /// Форма редактирования профиля.
+    /// </summary>
+    public async Task<IActionResult> Profile(string? id)
     {
-        throw new NotImplementedException();
+        if (id == null)
+        {
+            return NotFound();
+        }
+
+        var user = await _userManager
+            .Users
+            .FirstOrDefaultAsync(x => x.Id == id);
+
+        return View(user);
+    }
+
+    /// <summary>
+    /// Редактировать профиль.
+    /// </summary>
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Profile(string? id, User user)
+    {
+        if (id != user.Id)
+        {
+            return NotFound();
+        }
+
+        if (!ModelState.IsValid)
+        {
+            return View(user);
+        }
+
+        await _userManager.UpdateAsync(user);
+
+        return View(user);
     }
 }

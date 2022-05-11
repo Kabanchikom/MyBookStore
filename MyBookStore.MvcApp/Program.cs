@@ -41,7 +41,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Account}/{action=Login}/{id?}");
+    pattern: "{controller=Account}/{action=Profile}/{id?}");
 
 var seedData = new SeedData();
 await seedData.EnsurePopulated(app, builder);

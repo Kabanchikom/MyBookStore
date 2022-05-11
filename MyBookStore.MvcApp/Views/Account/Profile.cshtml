@@ -1,0 +1,54 @@
+@model User
+<form asp-action="Profile">
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img class="rounded-circle mt-5"
+                         width="150px"
+                         src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                    <span class="font-weight-bold">@Model.Surname @Model.Name @Model.Middlename</span>
+                    <span class="text-black-50">@Model.Email</span>
+                    <span> </span>
+                </div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Настройки профиля</h4>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label asp-for="Surname" class="control-label"></label>
+                            <input asp-for="Surname" class="form-control"/>
+                            <span asp-validation-for="Surname" class="text-danger"></span>
+                        </div><br>
+                        <div class="col-md-12">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control"/>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div><br>
+                        <div class="col-md-12">
+                            <label asp-for="Middlename" class="control-label"></label>
+                            <input asp-for="Middlename" class="form-control"/>
+                            <span asp-validation-for="Middlename" class="text-danger"></span> <br>
+                        </div>
+                        <div class="col-md-12">
+                            <label asp-for="PhoneNumber" class="control-label"></label>
+                            <input asp-for="PhoneNumber" class="form-control"/>
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-12">
+                            <label asp-for="DateOfBirth" class="control-label"></label>
+                            <input type="date" asp-for="DateOfBirth" class="form-control"/>
+                            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <button class="btn btn-outline-dark" type="submit">Сохранить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
