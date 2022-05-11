@@ -12,7 +12,7 @@ builder.Services.AddDbContext<IdentityContext>(options =>
 builder.Services.AddDbContext<BookStoreContext>(opts =>
     opts.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<IdentityContext>();
 ;
 
@@ -41,7 +41,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Account}/{action=Register}/{id?}");
+    pattern: "{controller=Account}/{action=Login}/{id?}");
 
 var seedData = new SeedData();
 await seedData.EnsurePopulated(app, builder);
