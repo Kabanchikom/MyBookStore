@@ -12,23 +12,6 @@
     <link rel="stylesheet" href="~/css/comments.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/MyBookStore.MvcApp.styles.css" asp-append-version="true"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <style>
-        /* Stackoverflow preview fix, please ignore */
-        .navbar-nav {
-          flex-direction: row;
-        }
-        
-        .nav-link {
-          padding-right: .5rem !important;
-          padding-left: .5rem !important;
-        }
-        
-        /* Fixes dropdown menus placed on the right side */
-        .ml-auto .dropdown-menu {
-          left: auto !important;
-          right: 0px;
-        }
-      </style>
 </head>
 <body>
 <header>
@@ -44,10 +27,10 @@
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="BookStore" asp-action="List">Каталог</a>
+                        <a class="nav-link" asp-area="" asp-controller="BookStore" asp-action="List">Каталог</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="BookStore" asp-action="Privacy">О нас</a>
+                        <a class="nav-link" asp-area="" asp-controller="BookStore" asp-action="Privacy">О нас</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
