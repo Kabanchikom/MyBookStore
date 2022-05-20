@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MyBookStore.MvcApp.Infrastructure;
 using MyBookStore.MvcApp.Models;
@@ -12,9 +13,20 @@ builder.Services.AddDbContext<IdentityContext>(options =>
 builder.Services.AddDbContext<BookStoreContext>(opts =>
     opts.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
+builder.Services.AddDefaultIdentity<User>(options =>
+    {
+        options.SignIn.RequireConfirmedAccount = false;
+
+        options.Password = new PasswordOptions
+        {
+            RequireDigit = false,
+            RequiredLength = 5,
+            RequireLowercase = false,
+            RequireUppercase = false,
+            RequireNonAlphanumeric = false
+        };
+    })
     .AddEntityFrameworkStores<IdentityContext>();
-;
 
 builder.Host.UseDefaultServiceProvider(options => options.ValidateScopes = false);
 builder.Services.AddControllersWithViews();
