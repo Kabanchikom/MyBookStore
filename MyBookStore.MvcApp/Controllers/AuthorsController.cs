@@ -1,4 +1,5 @@
 #nullable disable
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyBookStore.MvcApp.Models;
@@ -9,6 +10,7 @@ namespace MyBookStore.MvcApp.Controllers;
 /// <summary>
 /// CRUD операции над таблицей "Авторы".
 /// </summary>
+[Authorize]
 public class AuthorsController : Controller
 {
     private readonly BookStoreContext _context;

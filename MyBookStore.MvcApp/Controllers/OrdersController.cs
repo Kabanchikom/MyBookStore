@@ -1,4 +1,5 @@
 #nullable disable
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ using MyBookStore.MvcApp.Models.EF;
 
 namespace MyBookStore.MvcApp.Controllers;
 
+[Authorize]
 public class OrdersController : Controller
 {
     private readonly BookStoreContext _context;

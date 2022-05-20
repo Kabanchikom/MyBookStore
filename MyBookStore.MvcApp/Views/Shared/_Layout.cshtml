@@ -33,23 +33,24 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="BookStore" asp-action="Privacy">О нас</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Администрирование
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" asp-controller="Books" asp-action="Index">Книги</a>
-                            <a class="dropdown-item" asp-controller="Authors" asp-action="Index">Авторы</a>
-                            <a class="dropdown-item" asp-controller="BookTypes" asp-action="Index">Типы издания</a>
-                            <a class="dropdown-item" asp-controller="Genres" asp-action="Index">Жанры</a>
-                            <a class="dropdown-item" asp-controller="Manufacturers" asp-action="Index">Издатели</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" asp-controller="Orders" asp-action="Index">Заказы</a>
-                        </div>
-                    </li>
-
                     @if (SignInManager.IsSignedIn(User))
                     {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Администрирование
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-controller="Books" asp-action="Index">Книги</a>
+                                <a class="dropdown-item" asp-controller="Authors" asp-action="Index">Авторы</a>
+                                <a class="dropdown-item" asp-controller="BookTypes" asp-action="Index">Типы издания</a>
+                                <a class="dropdown-item" asp-controller="Genres" asp-action="Index">Жанры</a>
+                                <a class="dropdown-item" asp-controller="Manufacturers" asp-action="Index">Издатели</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-controller="Orders" asp-action="Index">Заказы</a>
+                            </div>
+                        </li>
+
+
                         <li class="nav-item dropdown">
                             <ul class="nav navbar-nav ml-5">
                                 <li class="dropdown">

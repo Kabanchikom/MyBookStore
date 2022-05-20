@@ -1,5 +1,6 @@
 #nullable disable
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ namespace MyBookStore.MvcApp.Controllers;
 /// <summary>
 /// CRUD операции над таблицей "Книги".
 /// </summary>
+[Authorize]
 public class BooksController : Controller
 {
     private readonly BookStoreContext _context;

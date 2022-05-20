@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyBookStore.MvcApp.Models;
@@ -9,6 +10,7 @@ namespace MyBookStore.MvcApp.Controllers;
 /// <summary>
 /// Операции над корзиной.
 /// </summary>
+[Authorize]
 public class CartController : Controller
 {
     private readonly BookStoreContext _context;
@@ -24,6 +26,7 @@ public class CartController : Controller
     /// Корзина.
     /// </summary>
     /// <param name="returnUrl">Адрес страницы для возврата.</param>
+    [AllowAnonymous]
     public IActionResult Index(string returnUrl)
     {
         return View(new CartIndexViewModel
@@ -37,6 +40,7 @@ public class CartController : Controller
     /// Добавить в корзину.
     /// </summary>
     /// <param name="returnUrl">Адрес страницы для возврата.</param>
+    [AllowAnonymous]
     public IActionResult AddToCart(int bookId, string returnUrl, int quantity = 1)
     {
         var book = _context
@@ -60,6 +64,7 @@ public class CartController : Controller
     /// Удалить из корзины.
     /// </summary>
     /// <param name="returnUrl">Адрес страницы для возврата.</param>
+    [AllowAnonymous]
     public IActionResult RemoveFromCart(int bookId, string returnUrl)
     {
         var book = _context

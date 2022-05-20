@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +7,7 @@ using MyBookStore.MvcApp.Models.ViewModels;
 
 namespace MyBookStore.MvcApp.Controllers;
 
+[Authorize]
 public class AccountController : Controller
 {
     private readonly UserManager<User> _userManager;
@@ -20,6 +22,7 @@ public class AccountController : Controller
     /// <summary>
     /// Форма регистрации.
     /// </summary>
+    [AllowAnonymous]
     [HttpGet]
     public IActionResult Register()
     {
@@ -29,6 +32,7 @@ public class AccountController : Controller
     /// <summary>
     /// Зарегистрировать пользователя.
     /// </summary>
+    [AllowAnonymous]
     [HttpPost]
     public async Task<IActionResult> Register(RegisterViewModel model)
     {
@@ -67,11 +71,13 @@ public class AccountController : Controller
     }
 
     [HttpGet]
+    [AllowAnonymous]
     public IActionResult Login(string returnUrl = null)
     {
         return View(new LoginViewModel {ReturnUrl = returnUrl});
     }
 
+    [AllowAnonymous]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Login(LoginViewModel model)

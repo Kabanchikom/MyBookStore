@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Korzh.EasyQuery.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,10 @@ using MyBookStore.MvcApp.Models.ViewModels;
 
 namespace MyBookStore.MvcApp.Controllers;
 
+/// <summary>
+/// Каталог книжного магазина.
+/// </summary>
+[Authorize]
 public class BookStoreController : Controller
 {
     private readonly ILogger<BookStoreController> _logger;
@@ -20,6 +25,16 @@ public class BookStoreController : Controller
         _context = context;
     }
 
+    /// <summary>
+    /// Каталог книг.
+    /// </summary>
+    /// <param name="searchText">Запрос полнотекстового поиска.</param>
+    /// <param name="pageNumber">Номер страницы.</param>
+    /// <param name="pageSize">Размер страницы.</param>
+    /// <param name="manufacturerId">Фильтрация по издателю.</param>
+    /// <param name="sortOrder">Порядок сортировки.</param>
+    /// <param name="sortBy">Поле сортировки.</param>
+    [AllowAnonymous]
     public async Task<IActionResult> List(
         string? searchText = null,
         int pageNumber = 1,
@@ -65,11 +80,16 @@ public class BookStoreController : Controller
         return View(viewModel);
     }
 
+    [AllowAnonymous]
     public IActionResult Privacy()
     {
         return View();
     }
 
+    /// <summary>
+    /// Страница книги в каталоге.
+    /// </summary>
+    [AllowAnonymous]
     public async Task<IActionResult> Book(int bookId)
     {
         var book = _context
@@ -84,6 +104,7 @@ public class BookStoreController : Controller
         return View(book);
     }
 
+    [AllowAnonymous]
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
