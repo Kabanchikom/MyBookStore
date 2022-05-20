@@ -13,7 +13,7 @@ builder.Services.AddDbContext<IdentityContext>(options =>
 builder.Services.AddDbContext<BookStoreContext>(opts =>
     opts.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddDefaultIdentity<User>(options =>
+builder.Services.AddIdentity<User, IdentityRole>(options =>
     {
         options.SignIn.RequireConfirmedAccount = false;
 

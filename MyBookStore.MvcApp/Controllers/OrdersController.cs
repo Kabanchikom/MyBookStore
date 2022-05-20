@@ -28,6 +28,7 @@ public class OrdersController : Controller
     /// Список заказов.
     /// </summary>
     /// <returns></returns>
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Index()
     {
         var bookStoreContext =
@@ -91,6 +92,7 @@ public class OrdersController : Controller
     /// <summary>
     /// Форма редактирования заказа.
     /// </summary>
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Edit(int? id)
     {
         if (id == null)
@@ -114,6 +116,7 @@ public class OrdersController : Controller
     /// </summary>
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Edit(int id,
         [Bind("Id,Name,Middlename,Surname,StatusId,DeliveryTypeId,Address,CreatedAt")]
         Order order)
@@ -161,6 +164,7 @@ public class OrdersController : Controller
     /// <summary>
     /// Форма удаления заказа.
     /// </summary>
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(int? id)
     {
         if (id == null)
@@ -186,6 +190,7 @@ public class OrdersController : Controller
     /// </summary>
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
         var order = await _context

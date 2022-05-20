@@ -10,7 +10,7 @@ namespace MyBookStore.MvcApp.Controllers;
 /// <summary>
 /// CRUD операции над таблицей "Авторы".
 /// </summary>
-[Authorize]
+[Authorize(Roles = "Admin")]
 public class AuthorsController : Controller
 {
     private readonly BookStoreContext _context;

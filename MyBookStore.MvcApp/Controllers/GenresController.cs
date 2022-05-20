@@ -10,7 +10,7 @@ namespace MyBookStore.MvcApp.Controllers;
 /// <summary>
 /// CRUD операции над таблицей "Жанры".
 /// </summary>
-[Authorize]
+[Authorize(Roles = "Admin")]
 public class GenresController : Controller
 {
     private readonly BookStoreContext _context;

@@ -1,6 +1,7 @@
 ﻿@using System.Security.Claims
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +34,8 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="BookStore" asp-action="Privacy">О нас</a>
                     </li>
-                    @if (SignInManager.IsSignedIn(User))
+
+                    @if (User.IsInRole("Admin"))
                     {
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -49,8 +51,9 @@
                                 <a class="dropdown-item" asp-controller="Orders" asp-action="Index">Заказы</a>
                             </div>
                         </li>
-
-
+                    }
+                    @if (SignInManager.IsSignedIn(User))
+                    {
                         <li class="nav-item dropdown">
                             <ul class="nav navbar-nav ml-5">
                                 <li class="dropdown">
