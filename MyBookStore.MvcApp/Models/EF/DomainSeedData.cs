@@ -2,7 +2,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MyBookStore.MvcApp.Models.EF;
 
-public class SeedData
+/// <summary>
+/// Тестовые данные для модели предметной области.
+/// </summary>
+public class DomainSeedData
 {
     public async Task EnsurePopulated(IApplicationBuilder app, WebApplicationBuilder builder)
     {

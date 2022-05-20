@@ -27,7 +27,7 @@ public class User : IdentityUser
     /// Отчество/среднее имя.
     /// </summary>
     [DisplayName("Отчество")]
-    public string Middlename { get; set; }
+    public string? Middlename { get; set; }
 
     /// <summary>
     /// Номер телефона.

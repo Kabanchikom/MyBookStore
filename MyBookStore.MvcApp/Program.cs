@@ -55,7 +55,10 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=BookStore}/{action=List}/{id?}");
 
-var seedData = new SeedData();
-await seedData.EnsurePopulated(app, builder);
+var domainSeedData = new DomainSeedData();
+var identitySeedData = new IdentitySeedData();
+
+await domainSeedData.EnsurePopulated(app, builder);
+await identitySeedData.EnsurePopulated(app);
 
 app.Run();
