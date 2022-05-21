@@ -19,4 +19,29 @@ public class Author
     {
         return $"{Name} {MiddleName} {Surname}";
     }
+
+    /// <summary>
+    /// Инициалы.
+    /// </summary>
+    public string Initials
+    {
+        get
+        {
+            if (Surname == null)
+            {
+                return Name;
+            }
+
+            var initials = Name[0] + ".";
+
+            if (MiddleName != null)
+            {
+                initials += MiddleName[0] + ".";
+            }
+
+            initials += " " + Surname;
+
+            return initials;
+        }
+    }
 }

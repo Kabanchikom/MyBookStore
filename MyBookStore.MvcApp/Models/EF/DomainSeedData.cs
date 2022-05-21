@@ -661,7 +661,7 @@ public class DomainSeedData
         {
             Title = "Программирование: принципы и практика использования C++",
             ImagePath =
-                $"/img/straustrup_srogramirovanie_c++.jpg",
+                $"/img/straustrup_srogramirovanie_cpp.jpg",
             ReceiptDate = new DateTime(2014, 12, 12),
             Types = bookTypes.Where(x => x.Name == "Печатное издание").ToList(),
             Price = 4799.00m,
@@ -984,13 +984,6 @@ public class DomainSeedData
 
         authors.Add(new Author
         {
-            Name = "Дональд",
-            MiddleName = "Эрвин",
-            Surname = "Кнут"
-        });
-
-        authors.Add(new Author
-        {
             Name = "Станислав",
             Surname = "Лем"
         });
@@ -1064,6 +1057,12 @@ public class DomainSeedData
             Name = "Евгений",
             MiddleName = "Иванович",
             Surname = "Замятин"
+        });
+
+        authors.Add(new Author
+        {
+            Name = "Фридрих",
+            Surname = "Ницше"
         });
 
         #endregion

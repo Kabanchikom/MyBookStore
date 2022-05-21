@@ -46,7 +46,8 @@ public class BookStoreController : Controller
         IQueryable<Book> books = _context
             .Books
             .Include(x => x.Manufacturer)
-            .Include(x => x.Types);
+            .Include(x => x.Types)
+            .Include(x => x.Authors);
 
         var filteredBooks = books
             .FullTextSearchQuery(searchText);
