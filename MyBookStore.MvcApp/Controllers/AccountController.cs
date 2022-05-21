@@ -1,8 +1,9 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using MyBookStore.MvcApp.Models;
+using MyBookStore.MvcApp.Models.EF;
 using MyBookStore.MvcApp.Models.ViewModels;
 
 namespace MyBookStore.MvcApp.Controllers;
@@ -11,12 +12,20 @@ namespace MyBookStore.MvcApp.Controllers;
 public class AccountController : Controller
 {
     private readonly UserManager<User> _userManager;
+    private readonly IdentityContext _context;
     private readonly SignInManager<User> _signInManager;
+    private readonly IMapper _mapper;
 
-    public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+    public AccountController(
+        UserManager<User> userManager,
+        SignInManager<User> signInManager,
+        IMapper mapper,
+        IdentityContext context)
     {
         _userManager = userManager;
         _signInManager = signInManager;
+        _mapper = mapper;
+        _context = context;
     }
 
     /// <summary>
@@ -129,9 +138,7 @@ public class AccountController : Controller
             return NotFound();
         }
 
-        var user = await _userManager
-            .Users
-            .FirstOrDefaultAsync(x => x.Id == id);
+        var user = await _userManager.FindByIdAsync(id);
 
         return View(user);
     }
@@ -141,19 +148,22 @@ public class AccountController : Controller
     /// </summary>
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Profile(string? id, User user)
+    public async Task<IActionResult> Profile(string? id, User model)
     {
-        if (id != user.Id)
+        if (id != model.Id)
         {
             return NotFound();
         }
 
         if (!ModelState.IsValid)
         {
-            return View(user);
+            return View(model);
         }
 
+        var user = await _userManager.FindByIdAsync(id);
+        _mapper.Map(model, user);
         await _userManager.UpdateAsync(user);
+        await _context.SaveChangesAsync();
 
         return View(user);
     }
