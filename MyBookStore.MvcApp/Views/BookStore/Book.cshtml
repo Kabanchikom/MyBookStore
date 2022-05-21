@@ -15,8 +15,14 @@
                         .Select(x => x.ToString())
                         .ToArray())
                 </div>
-                <div class="fs-5 mb-5">
+                <div class="fs-5 mb-2">
                     <span>@Model.Price.ToString("C")</span>
+                </div>
+                <div class="d-flex text-warning mb-5 h4">
+                    @for (int i = 0; i < Math.Round(Model.Rating); i++)
+                    {
+                        <div class="bi-star-fill"></div>
+                    }
                 </div>
                 <p class="lead">@Model.Description</p>
                 <div class="d-flex">

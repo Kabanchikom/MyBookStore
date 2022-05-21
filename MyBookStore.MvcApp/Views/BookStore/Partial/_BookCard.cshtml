@@ -20,11 +20,10 @@
             </h5>
             <!-- Product reviews-->
             <div class="d-flex justify-content-center small text-warning mb-2">
-                <div class="bi-star-fill"></div>
-                <div class="bi-star-fill"></div>
-                <div class="bi-star-fill"></div>
-                <div class="bi-star-fill"></div>
-                <div class="bi-star-fill"></div>
+                @for (int i = 0; i < Math.Round(Model.Rating); i++)
+                {
+                    <div class="bi-star-fill"></div>
+                }
             </div>
             <!-- Product price-->
             <span class="text-muted text-decoration-line-through"></span>
