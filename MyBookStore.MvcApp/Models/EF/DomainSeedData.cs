@@ -46,7 +46,7 @@ public class DomainSeedData
         books.Add(new Book
         {
             Title = "Пикник на обочине",
-            ImagePath = "https://thumb.cloud.mail.ru/weblink/thumb/xw1/cxTT/Ym7f5R44E",
+            ImagePath = "/img/abs_strugatskie_piknik_na_obochine.jpeg",
             ReceiptDate = new DateTime(2017, 7, 1),
             Types = bookTypes.Where(x => x.Name == "Печатное издание").ToList(),
             Price = 219.00m,
@@ -70,7 +70,7 @@ public class DomainSeedData
         books.Add(new Book
         {
             Title = "Архипелаг Гулаг",
-            ImagePath = $"https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/archipelag_gulag.jpg",
+            ImagePath = $"/img/archipelag_gulag.jpg",
             ReceiptDate = new DateTime(2018, 6, 2),
             Types = bookTypes.Where(x => x.Name == "Электронное издание").ToList(),
             Price = 99.00m,
@@ -97,7 +97,7 @@ public class DomainSeedData
         {
             Title = "Государственность и Анархия",
             ImagePath =
-                "https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/bakunin_gosudarstvennost_i_anarhia.jpg",
+                "/img/bakunin_gosudarstvennost_i_anarhia.jpg",
             ReceiptDate = new DateTime(2018, 6, 2),
             Types = bookTypes.Where(x => x.Name == "Печатное издание").ToList(),
             Price = 529.00m,
@@ -128,7 +128,7 @@ public class DomainSeedData
         books.Add(new Book
         {
             Title = "Книга символов",
-            ImagePath = "https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/balmont_kniga_simvolov.jpg",
+            ImagePath = "/img/balmont_kniga_simvolov.jpg",
             ReceiptDate = new DateTime(2015, 4, 3),
             Types = bookTypes.Where(x => x.Name == "Печатное издание").ToList(),
             Price = 749.00m,
@@ -154,7 +154,7 @@ public class DomainSeedData
         books.Add(new Book
         {
             Title = "Дракула",
-            ImagePath = "https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/brem_stoker_drakula.jpg",
+            ImagePath = "/img/brem_stoker_drakula.jpg",
             ReceiptDate = new DateTime(2017, 5, 13),
             Types = bookTypes.Where(x => x.Name == "Печатное издание").ToList(),
             Price = 419.00m,
@@ -182,7 +182,7 @@ public class DomainSeedData
         books.Add(new Book
         {
             Title = "Бусидо",
-            ImagePath = $"https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/busido.jpg",
+            ImagePath = $"/img/busido.jpg",
             ReceiptDate = new DateTime(2020, 7, 1),
             Types = bookTypes.Where(x => x.Name == "Электронное издание").ToList(),
             Price = 99.00m,
@@ -210,7 +210,7 @@ public class DomainSeedData
         {
             Title = "Божественная комедия",
             ImagePath =
-                $"https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/dante_bozestvennaya_komediya.jpg",
+                $"/img/dante_bozestvennaya_komediya.jpg",
             ReceiptDate = new DateTime(2021, 2, 20),
             Types = bookTypes.Where(x => x.Name == "Печатное издание").ToList(),
             Price = 1299.00m,
@@ -243,7 +243,7 @@ public class DomainSeedData
         books.Add(new Book
         {
             Title = "Гиперион",
-            ImagePath = "https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/den_simmons_hyperion.jpg",
+            ImagePath = "/img/den_simmons_hyperion.jpg",
             ReceiptDate = new DateTime(2022, 2, 20),
             Types = bookTypes.Where(x => x.Name == "Печатное издание").ToList(),
             Price = 2095.00m,
@@ -268,7 +268,7 @@ public class DomainSeedData
         books.Add(new Book
         {
             Title = "Потерянный рай",
-            ImagePath = "https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/djon_milton_poteryaniy_rai.jpg",
+            ImagePath = "/img/djon_milton_poteryaniy_rai.jpg",
             ReceiptDate = new DateTime(2022, 2, 20),
             Types = bookTypes.Where(x => x.Name == "Печатное издание").ToList(),
             Price = 199.00m,
@@ -291,7 +291,7 @@ public class DomainSeedData
         books.Add(new Book
         {
             Title = "Фауст",
-            ImagePath = "https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/gete_faust.jpg",
+            ImagePath = "/img/gete_faust.jpg",
             ReceiptDate = new DateTime(2014, 11, 11),
             Types = bookTypes.Where(x => x.Name == "Печатное издание").ToList(),
             Price = 1199.00m,
@@ -321,7 +321,7 @@ public class DomainSeedData
         books.Add(new Book
         {
             Title = "Замок",
-            ImagePath = $"https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/kafka-zamok.jpg",
+            ImagePath = $"/img/kafka-zamok.jpg",
             ReceiptDate = new DateTime(2012, 1, 10),
             Types = bookTypes.Where(x => x.Name == "Печатное издание").ToList(),
             Price = 199.00m,
@@ -353,7 +353,7 @@ public class DomainSeedData
         {
             Title = "Над кукушкиным гнездом",
             ImagePath =
-                $"https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/ken_kizi_nad_kukushkinim_gnezdom.jpg",
+                $"/img/ken_kizi_nad_kukushkinim_gnezdom.jpg",
             ReceiptDate = new DateTime(2015, 2, 17),
             Types = bookTypes.Where(x => x.Name == "Печатное издание").ToList(),
             Price = 199.00m,
@@ -384,7 +384,7 @@ public class DomainSeedData
         {
             Title = "Искусство программирования",
             ImagePath =
-                $"https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/knut_iskusstvo_programmirovaniya.jpg",
+                $"/img/knut_iskusstvo_programmirovaniya.jpg",
             ReceiptDate = new DateTime(2017, 3, 9),
             Types = bookTypes.Where(x => x.Name == "Печатное издание").ToList(),
             Price = 4199.00m,
@@ -412,7 +412,7 @@ public class DomainSeedData
         books.Add(new Book
         {
             Title = "Солярис",
-            ImagePath = $"https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/lem_solyaris.jpg",
+            ImagePath = $"/img/lem_solyaris.jpg",
             ReceiptDate = new DateTime(2018, 11, 19),
             Types = bookTypes.Where(x => x.Name == "Электронное издание").ToList(),
             Price = 99.00m,
@@ -439,7 +439,7 @@ public class DomainSeedData
         books.Add(new Book
         {
             Title = "Мастер и Маргарита",
-            ImagePath = $"https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/master_i_margarita.jpg",
+            ImagePath = $"/img/master_i_margarita.jpg",
             ReceiptDate = new DateTime(2015, 7, 1),
             Types = bookTypes.Where(x => x.Name == "Печатное издание").ToList(),
             Price = 699.00m,
@@ -472,7 +472,7 @@ public class DomainSeedData
         {
             Title = "Мир как воля и представление",
             ImagePath =
-                $"https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/mir_kak_volya_i_predstavlenie.jpg",
+                $"/img/mir_kak_volya_i_predstavlenie.jpg",
             ReceiptDate = new DateTime(2016, 2, 1),
             Types = bookTypes.Where(x => x.Name == "Печатное издание").ToList(),
             Price = 899.00m,
@@ -495,7 +495,7 @@ public class DomainSeedData
         books.Add(new Book
         {
             Title = "Государство",
-            ImagePath = $"https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/platon_gosudarstvo.jpg",
+            ImagePath = $"/img/platon_gosudarstvo.jpg",
             ReceiptDate = new DateTime(2016, 3, 2),
             Types = bookTypes.Where(x => x.Name == "Электронное издание").ToList(),
             Price = 99.00m,
@@ -517,7 +517,7 @@ public class DomainSeedData
         books.Add(new Book
         {
             Title = "Преступление и наказание",
-            ImagePath = $"https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/prestuplenie_i_nakazanie.jpg",
+            ImagePath = $"/img/prestuplenie_i_nakazanie.jpg",
             ReceiptDate = new DateTime(2017, 2, 12),
             Types = bookTypes.Where(x => x.Name == "Печатное издание").ToList(),
             Price = 599.00m,
@@ -548,7 +548,7 @@ public class DomainSeedData
         books.Add(new Book
         {
             Title = "Три товарища",
-            ImagePath = $"https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/remark_tri_tovarisha.jpg",
+            ImagePath = $"/img/remark_tri_tovarisha.jpg",
             ReceiptDate = new DateTime(2017, 2, 12),
             Types = bookTypes.Where(x => x.Name == "Печатное издание").ToList(),
             Price = 299.00m,
@@ -572,7 +572,7 @@ public class DomainSeedData
         books.Add(new Book
         {
             Title = "Стихи о прекрасной даме",
-            ImagePath = $"https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/stihi_o_prekrasnoi_dame.jpg",
+            ImagePath = $"/img/stihi_o_prekrasnoi_dame.jpg",
             ReceiptDate = new DateTime(2017, 2, 12),
             Types = bookTypes.Where(x => x.Name == "Печатное издание").ToList(),
             Price = 199.00m,
@@ -601,7 +601,7 @@ public class DomainSeedData
         books.Add(new Book
         {
             Title = "Сто лет одиночества",
-            ImagePath = $"https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/sto_let_odinochestva.jpg",
+            ImagePath = $"/img/sto_let_odinochestva.jpg",
             ReceiptDate = new DateTime(2017, 2, 12),
             Types = bookTypes.Where(x => x.Name == "Печатное издание").ToList(),
             Price = 799.00m,
@@ -630,7 +630,7 @@ public class DomainSeedData
         {
             Title = "Программирование: принципы и практика использования C++",
             ImagePath =
-                $"https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/straustrup_srogramirovanie_c%2B%2B.jpg",
+                $"/img/straustrup_srogramirovanie_c++.jpg",
             ReceiptDate = new DateTime(2014, 12, 12),
             Types = bookTypes.Where(x => x.Name == "Печатное издание").ToList(),
             Price = 4799.00m,
@@ -693,7 +693,7 @@ public class DomainSeedData
         books.Add(new Book
         {
             Title = "Искусство войны",
-            ImagePath = $"https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/sun_tzy_iskusstvo_voiny.jpeg",
+            ImagePath = $"/img/sun_tzy_iskusstvo_voiny.jpeg",
             ReceiptDate = new DateTime(2017, 2, 12),
             Types = bookTypes.Where(x => x.Name == "Электронное издание").ToList(),
             Price = 99.00m,
@@ -718,7 +718,7 @@ public class DomainSeedData
         books.Add(new Book
         {
             Title = "Так говорил Заратустра",
-            ImagePath = $"https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/tak_govoril_zaratustra.webp",
+            ImagePath = $"/img/tak_govoril_zaratustra.webp",
             ReceiptDate = new DateTime(2015, 9, 27),
             Types = bookTypes.Where(x => x.Name == "Печатное издание").ToList(),
             Price = 199.00m,
@@ -743,7 +743,7 @@ public class DomainSeedData
         books.Add(new Book
         {
             Title = "Война и мир",
-            ImagePath = $"https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/voina_i_mir.jpg",
+            ImagePath = $"/img/voina_i_mir.jpg",
             ReceiptDate = new DateTime(2015, 9, 27),
             Types = bookTypes.Where(x => x.Name == "Печатное издание").ToList(),
             Price = 799.00m,
@@ -770,7 +770,7 @@ public class DomainSeedData
         books.Add(new Book
         {
             Title = "Мы",
-            ImagePath = $"https://thumb.cloud.mail.ru/weblink/thumb/xw1/uErg/ozbMMXozw/zamyatin_mi.jpg",
+            ImagePath = $"/img/zamyatin_mi.jpg",
             ReceiptDate = new DateTime(2014, 12, 17),
             Types = bookTypes.Where(x => x.Name == "Печатное издание").ToList(),
             Price = 499.00m,
