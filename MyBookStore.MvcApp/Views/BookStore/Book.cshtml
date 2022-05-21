@@ -25,13 +25,17 @@
                           asp-controller="Cart"
                           method="post">
                         <input type="hidden" name="bookId" asp-for="Id"/>
-                        <input type="hidden" name="returnUrl"
-                               value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
-                        <input class="form-control text-center me-3" name="quantity" type="num" value="1" style="max-width: 3rem"/>
-                        <button type="submit" class="btn btn-outline-dark mt-auto" href="#">
-                            В корзину
-                            <i class="bi-cart-fill me-1"></i>
-                        </button>
+                        <div class="input-group mb-3">
+                            <input type="hidden" name="returnUrl"
+                                   value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
+                            <input class="form-control text-center me-3" name="quantity" type="num" value="1" style="max-width: 3rem"/>
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-outline-dark mt-auto" href="#">
+                                    В корзину
+                                    <i class="bi-cart-fill me-1"></i>
+                                </button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
