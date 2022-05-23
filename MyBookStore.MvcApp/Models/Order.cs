@@ -9,17 +9,7 @@ namespace MyBookStore.MvcApp.Models;
 public class Order
 {
     public int Id { get; set; }
-
-    // /// <summary>
-    // /// Id клиента.
-    // /// </summary>
-    // public int UserId { get; set; }
-
-    // /// <summary>
-    // /// Клиент.
-    // /// </summary>
-    // public User User { get; set; }
-
+    
     /// <summary>
     /// Имя получателя.
     /// </summary>
@@ -77,6 +67,16 @@ public class Order
     /// </summary>
     [DisplayName("Дата заказа")]
     public DateTime CreatedAt { get; set; }
+    
+    // /// <summary>
+    // /// Id клиента.
+    // /// </summary>
+    // public int CreatedById { get; set; }
+    //
+    // /// <summary>
+    // /// Клиент.
+    // /// </summary>
+    // public User CreatedBy { get; set; }
 
     /// <summary>
     /// Позиции в корзине.

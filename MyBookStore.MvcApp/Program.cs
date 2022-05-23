@@ -63,7 +63,7 @@ app.MapControllerRoute(
 var domainSeedData = new DomainSeedData();
 var identitySeedData = new IdentitySeedData();
 
-await domainSeedData.EnsurePopulated(app, builder);
 await identitySeedData.EnsurePopulated(app);
+await domainSeedData.EnsurePopulated(app, builder);
 
 app.Run();

@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Korzh.EasyQuery.Linq;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -100,9 +101,18 @@ public class BookStoreController : Controller
             .Include(x => x.Authors)
             .Include(x => x.Genres)
             .Include(x => x.Reviews)
+            .ThenInclude(x => x.CreatedBy)
             .FirstOrDefault(x => x.Id == bookId);
 
-        return View(book);
+        ViewBag.BookId = book.Id;
+
+        var viewModel = new BookViewModel
+        {
+            Book = book,
+            Review = new Review()
+        };
+        
+        return View(viewModel);
     }
 
     [AllowAnonymous]

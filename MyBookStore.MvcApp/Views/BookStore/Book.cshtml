@@ -1,41 +1,42 @@
 @using MyBookStore.MvcApp.Infrastructure
-@model Book
+@model BookViewModel
 
 <section class="py-6">
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-5 gx-lg-5 align-items-start">
             <div class="col-md-4">
-                <img class="card-img-top mb-5 mb-md-0 " src="@Model.ImagePath" alt="@Model.ImagePath"/>
+                <img class="card-img-top mb-5 mb-md-0 " src="@Model.Book.ImagePath" alt="@Model.Book.ImagePath"/>
             </div>
             <div class="col-md-6">
-                <h1 class="display-5 fw-bolder">@Model.Title</h1>
+                <h1 class="display-5 fw-bolder">@Model.Book.Title</h1>
                 <div class="fs-5 mb-1">
-                    @String.Join(", ", Model
+                    @String.Join(", ", Model.Book
                         .Authors
                         .Select(x => x.ToString())
                         .ToArray())
                 </div>
                 <div class="fs-5 mb-2">
-                    <span>@Model.Price.ToString("C")
-                        @if (Model.IsOnSale)
+                    <span class="h1">
+                        @Model.Book.Price.ToString("C")
+                        @if (Model.Book.IsOnSale)
                         {
                             <div class="badge bg-dark text-white" style="top: 0.5rem; right: 0.5rem">Sale</div>
                         }
                     </span>
                 </div>
                 <div class="d-flex text-warning mb-5 h4">
-                    @for (int i = 0; i < Math.Round(Model.Rating); i++)
+                    @for (int i = 0; i < Math.Round(Model.Book.Rating); i++)
                     {
                         <div class="bi-star-fill"></div>
                     }
                 </div>
-                <p class="lead">@Model.Description</p>
+                <p class="lead">@Model.Book.Description</p>
                 <div class="d-flex">
-                    <form id="@Model.Id"
+                    <form id="@Model.Book.Id"
                           asp-action="AddToCart"
                           asp-controller="Cart"
                           method="post">
-                        <input type="hidden" name="bookId" asp-for="Id"/>
+                        <input type="hidden" name="bookId" asp-for="@Model.Book.Id"/>
                         <div class="input-group mb-3">
                             <input type="hidden" name="returnUrl"
                                    value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
@@ -49,6 +50,12 @@
                         </div>
                     </form>
                 </div>
+            </div>
+            <div class="col-md-8">
+                @foreach (var review in Model.Book.Reviews)
+                {
+                    <partial name="Partial/_Review" for="@review"/>
+                }
             </div>
         </div>
     </div>
